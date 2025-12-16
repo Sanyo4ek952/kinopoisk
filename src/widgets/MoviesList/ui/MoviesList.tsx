@@ -5,12 +5,15 @@ import { cn } from "@/shared/lib";
 import { MovieCard, MovieCardSkeleton } from "@/entities/movie/ui";
 import { useGetMoviesQuery } from "@/entities/movie/api/moviesApi";
 import { EmptyState, ErrorState } from "@/shared/ui";
+import { useMoviesQueryParams } from "@/shared/lib/hooks/useMoviesQueryParams";
 
 const SKELETON_COUNT = 8;
 
 export const MoviesList = () => {
+  const query = useMoviesQueryParams();
+
   let content: React.ReactNode;
-  const { data, isLoading, isError, refetch } = useGetMoviesQuery();
+  const { data, isLoading, isError, refetch } = useGetMoviesQuery(query);
   if (isLoading)
     content = Array.from({ length: SKELETON_COUNT }).map((_, i) => (
       <MovieCardSkeleton key={i} />
