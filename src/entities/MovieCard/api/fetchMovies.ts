@@ -1,5 +1,5 @@
-import { moviesQuerySchema } from "@/shared/schemas/movies.schema";
-import { MoviesResponse } from "@/shared/api/types";
+import { moviesQuerySchema } from "@/entities/MovieCard/model/moviesQuerySchema";
+import { MoviesResponse } from "@/entities/MovieCard/model/types";
 
 const endpointMap = {
   popular: "/movie/popular",
