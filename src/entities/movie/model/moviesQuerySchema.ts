@@ -1,10 +1,9 @@
-// moviesQuerySchema.ts
 import { z } from "zod";
 
-export const moviesQuerySchema = z.object({
-  type: z.preprocess(
-    (v) => v ?? "now_playing",
-    z.enum(["now_playing", "popular", "top_rated"]),
-  ),
-  page: z.preprocess((v) => Number(v ?? 1), z.number().int().positive()),
+export const discoverMovieSchema = z.object({
+  page: z.coerce.number().int().min(1).max(500).optional(),
+  include_adult: z.coerce.boolean().default(false),
+  include_video: z.coerce.boolean().default(false),
 });
+
+export type DiscoverMovieParams = z.infer<typeof discoverMovieSchema>;

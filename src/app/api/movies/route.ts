@@ -1,14 +1,12 @@
-// app/api/movies/route.ts
 import { fetchMovies } from "@/entities/movie/api/server/fetchMovies";
-import { moviesQuerySchema } from "@/entities/movie/model/moviesQuerySchema";
+import { discoverMovieSchema } from "@/entities/movie/model/moviesQuerySchema";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const params = Object.fromEntries(req.nextUrl.searchParams);
-    const parsed = moviesQuerySchema.parse(params);
-
-    const data = await fetchMovies(parsed);
+    const searchParams = Object.fromEntries(req.nextUrl.searchParams);
+    const params = discoverMovieSchema.parse(searchParams);
+    const data = await fetchMovies(params);
     return Response.json(data);
   } catch (error) {
     return Response.json({ message: "Failed to load movies" }, { status: 400 });
