@@ -5,8 +5,12 @@ export type Movies = {
   release_date: string;
   overview: string;
 };
+export interface MoviesDates {
+  minimum: string;
+  maximum: string;
+}
 export type MoviesResponse = {
-  dates: Record<string, number>;
+  dates: MoviesDates;
   page: number;
   results: Movies[];
   total_pages: number;
