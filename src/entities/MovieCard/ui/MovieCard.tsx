@@ -1,8 +1,8 @@
 import React from "react";
 import { getPosterUrl } from "@/shared/lib/getPosterUrl";
-import type { Movies } from "@/shared/api/types";
+import type { Movies } from "@/entities/MovieCard/model/types";
 import Image from "next/image";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/lib";
 
 type Props = {
   isPriorityImageLoading: boolean;
