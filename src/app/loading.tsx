@@ -1,4 +1,4 @@
-import { MovieCardSkeleton } from "@/entities/MovieCard/ui";
+import { MovieCardSkeleton } from "@/entities/movie/ui";
 
 export default function Loading() {
   return (

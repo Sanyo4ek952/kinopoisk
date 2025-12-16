@@ -1,17 +1,15 @@
-import { moviesQuerySchema } from "@/entities/MovieCard/model/moviesQuerySchema";
-import { MoviesResponse } from "@/entities/MovieCard/model/types";
+import { moviesQuerySchema } from "@/entities/movie/model/moviesQuerySchema";
+import { MoviesResponse } from "@/entities/movie/model/types";
 
 const endpointMap = {
   popular: "/movie/popular",
   top_rated: "/movie/top_rated",
-  upcoming: "/movie/upcoming",
   now_playing: "/movie/now_playing",
 } as const;
 
-export async function fetchMovies(rawParams: {
-  type: string | null;
-  page: string | null;
-}): Promise<MoviesResponse> {
+type Params = { type: keyof typeof endpointMap; page: number };
+
+export async function fetchMovies(rawParams: Params): Promise<MoviesResponse> {
   const parsed = moviesQuerySchema.safeParse({
     type: rawParams.type,
     page: rawParams.page,
