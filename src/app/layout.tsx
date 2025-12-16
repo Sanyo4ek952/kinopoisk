@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Provider } from "react-redux";
-import { store } from "@/shared/store/store";
 import { Header } from "@/widgets/header/ui/Header";
 import { ProviderContainer } from "@/shared/ui/ProviderContainer";
 
@@ -26,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("datadta");
   return (
     <html lang="en">
       <body

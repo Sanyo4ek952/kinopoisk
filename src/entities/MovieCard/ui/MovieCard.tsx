@@ -1,26 +1,29 @@
 import React from "react";
 import { getPosterUrl } from "@/shared/lib/getPosterUrl";
-import { Movies } from "@/shared/api/types";
+import type { Movies } from "@/shared/api/types";
 import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
 
 type Props = {
+  isPriorityImageLoading: boolean;
   className?: string;
 } & Movies;
 export const MovieCard = ({
   className,
+  isPriorityImageLoading,
   poster_path,
   overview,
   title,
 }: Props) => {
   return (
-    <div className={cn("max-w-[500px]", className)}>
+    <div className={cn("w-full space-y-3", className)}>
       <Image
+        className="aspect-[2/3] w-full object-cover"
         width={500}
         height={750}
         src={getPosterUrl(poster_path)}
         alt={"sda"}
-        loading="lazy"
+        priority={isPriorityImageLoading}
       />
       <h2>{title}</h2>
       <div>{overview}</div>
