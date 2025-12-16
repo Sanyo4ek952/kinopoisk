@@ -9,22 +9,13 @@ import { EmptyState, ErrorState } from "@/shared/ui";
 const SKELETON_COUNT = 8;
 
 export const MoviesList = () => {
-  const {
-    data: response,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetMoviesQuery({
-    type: "now_playing",
-    page: 1,
-  });
   let content: React.ReactNode;
-
+  const { data, isLoading, isError, refetch } = useGetMoviesQuery();
   if (isLoading)
     content = Array.from({ length: SKELETON_COUNT }).map((_, i) => (
       <MovieCardSkeleton key={i} />
     ));
-  else if (isError || !response)
+  else if (isError || !data)
     content = (
       <ErrorState
         title={"Error"}
@@ -32,7 +23,7 @@ export const MoviesList = () => {
         onRetry={refetch}
       />
     );
-  else if (!response.results.length)
+  else if (!data.results.length)
     content = (
       <EmptyState
         title="Фильмы не найдены"
@@ -40,7 +31,7 @@ export const MoviesList = () => {
       />
     );
   else
-    content = response.results.map((movie, index) => (
+    content = data.results.map((movie, index) => (
       <MovieCard key={movie.id} isPriorityImageLoading={index < 2} {...movie} />
     ));
   return (
