@@ -1,5 +1,5 @@
 // app/api/movies/route.ts
-import { fetchMovies } from "@/entities/MovieCard/api/fetchMovies";
+import { fetchMovies } from "@/entities/MovieCard/api/server/fetchMovies";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);

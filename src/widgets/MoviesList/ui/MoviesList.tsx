@@ -1,6 +1,8 @@
 import React from "react";
-import { MovieCard, fetchMovies } from "@/entities/MovieCard";
+
 import { cn } from "@/shared/lib";
+import { fetchMovies } from "@/entities/MovieCard/api/server/fetchMovies";
+import { MovieCard } from "@/entities/MovieCard/ui";
 
 export const MoviesList = async () => {
   const response = await fetchMovies({
