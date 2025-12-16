@@ -1,5 +1,10 @@
-import Image from "next/image";
+import { MoviesList } from "@/widgets/MoviesList";
 
-export default function Home() {
-  return <div>Home Page</div>;
+export default async function Home() {
+  return (
+    <div>
+      Home Page
+      <MoviesList />
+    </div>
+  );
 }
