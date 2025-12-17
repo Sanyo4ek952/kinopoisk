@@ -1,6 +1,6 @@
 import { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
 import { MoviesResponse } from "@/entities/movie/model/types";
-import { apiFetch } from "@/shared/api/apiClient";
+import { apiFetch } from "@/shared/api/server/apiFetch";
 
 export async function fetchMovies(
   params: DiscoverMovieParams,
