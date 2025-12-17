@@ -1,3 +1,5 @@
+import "server-only";
+
 export async function apiFetch<T>(
   path: string,
   params?: URLSearchParams,
