@@ -7,7 +7,7 @@ export async function apiFetch<T>(
   const url = params
     ? `${process.env.BASE_URL}${path}?${params.toString()}`
     : `${process.env.BASE_URL}${path}`;
-
+  const test = 123;
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_ACCESS_KEY}`,
