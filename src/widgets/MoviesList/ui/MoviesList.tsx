@@ -14,6 +14,9 @@ export const MoviesList = () => {
 
   let content: React.ReactNode;
   const { data, isLoading, isError, refetch } = useGetMoviesQuery(query);
+  const handleRetry = () => {
+    void refetch();
+  };
   if (isLoading)
     content = Array.from({ length: SKELETON_COUNT }).map((_, i) => (
       <MovieCardSkeleton key={i} />
@@ -23,7 +26,7 @@ export const MoviesList = () => {
       <ErrorState
         title={"Error"}
         description={"Данные не подгрузились. Попробуйте снова"}
-        onRetry={refetch}
+        onRetry={handleRetry}
       />
     );
   else if (!data.results.length)
@@ -37,6 +40,7 @@ export const MoviesList = () => {
     content = data.results.map((movie, index) => (
       <MovieCard key={movie.id} isPriorityImageLoading={index < 2} {...movie} />
     ));
+
   return (
     <div
       className={cn(

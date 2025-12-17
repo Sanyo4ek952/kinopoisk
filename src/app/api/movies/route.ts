@@ -1,6 +1,6 @@
 import { fetchMovies } from "@/entities/movie/api/server/fetchMovies";
 import { discoverMovieSchema } from "@/entities/movie/model/moviesQuerySchema";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
     const data = await fetchMovies(params);
     return Response.json(data);
   } catch (error) {
+    console.log(error);
     return Response.json({ message: "Failed to load movies" }, { status: 400 });
   }
 }

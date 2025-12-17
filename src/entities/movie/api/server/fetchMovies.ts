@@ -1,5 +1,5 @@
-import { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
-import { MoviesResponse } from "@/entities/movie/model/types";
+import type { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
+import type { MoviesResponse } from "@/entities/movie/model/types";
 import { apiFetch } from "@/shared/api/server/apiFetch";
 
 export async function fetchMovies(

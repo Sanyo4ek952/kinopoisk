@@ -1,6 +1,6 @@
 import { baseApi } from "@/shared/api/baseApi";
-import { MoviesResponse } from "../model/types";
-import { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
+import type { MoviesResponse } from "../model/types";
+import type { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
 
 export const moviesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

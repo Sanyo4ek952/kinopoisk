@@ -1,5 +1,5 @@
 import { useSearchParams } from "next/navigation";
-import { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
+import type { DiscoverMovieParams } from "@/entities/movie/model/moviesQuerySchema";
 
 export function useMoviesQueryParams(): DiscoverMovieParams {
   const searchParams = useSearchParams() ?? new URLSearchParams();
